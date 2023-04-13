@@ -15,10 +15,12 @@ export const getCategories = async (req, res, next) => {
 
 // Get Categorie par l'id
 export const getCategory = async (req, res, next) => {
-
-    console.log(req.path.split("/")[2]);
+    const id = req.params.id
+    console.log(id);
+    //console.log(req.path.split("/")[2]);
     // Création d'un nouvelle catégorie
-    const category = await Category.findById(req.path.split("/")[2]);
+    //const category = await Category.findById(req.path.split("/")[2]);
+    const category = await Category.findById({"_id":id});
 
     console.log(category);
     //res.json(category);

@@ -16,15 +16,22 @@
     <header>
         <%- include('../header') %>
     </header>
-    <h1>Catégorie par l'id</h1>
+    Produit par l'id
+
     <div class="container text-center">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <%= category.categoryName %>
+                            <%= product.productName %>
                         </h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                            <%= product.productPrice %>€
+                        </h6>
+                        <p class="card-text">
+                            <%= product.productDescription %>
+                        </p>
                     </div>
                 </div>
             </div>

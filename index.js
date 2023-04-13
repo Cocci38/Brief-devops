@@ -20,6 +20,7 @@ const __dirname = path.resolve();
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connexion à la base de données
 connectDB();
@@ -31,6 +32,10 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap'));
+app.use('/js', express.static(__dirname + '/js'));
+app.use('/css', express.static(__dirname + '/scss'));
 
 app.use(homepageRouter);
 app.use(categoryRouter);

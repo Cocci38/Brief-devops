@@ -1,0 +1,23 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body{ 
+    background: #EEEFF6;
+}
+header{ 
+    background: #EEEFF6;
+}
+// img{
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+// }
+.image{
+    background-image: url("http://localhost:8082/assets/raphael-lovaski-DEuob2v77wI-unsplash%20(1).jpg");
+}
+.btn{
+    --bs-btn-bg: #A62C31 !important;
+    --bs-btn-color: #EEEFF6 !important;
+    --bs-btn-hover-bg: #EEEFF6 !important;
+    --bs-btn-hover-border-color: #A62C31 !important;
+    --bs-btn-hover-color: #A62C31 !important;
+}
