@@ -16,31 +16,35 @@
     <header>
         <%- include('../header') %>
     </header>
-    <h1>
-        <%= categoryHandCare.categoryName %>
-    </h1>
-    <div class="container text-center">
-        <div class="row">
-            <% productHandCare.forEach(function(product) { %>
-                <div class="col">
+    <main>
+        <h1>
+            <%= categoryHandCare.categoryName %>
+        </h1>
+        <div class="container text-center">
+            <div class="row">
+                <% productHandCare.forEach(function(product) { %>
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-header">
                             <h5 class="card-title">
                                 <%= product.productName %>
                             </h5>
+                        </div>
+                        <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-body-secondary">
                                 <%= product.productPrice %>€
                             </h6>
                             <p class="card-text">
                                 <%= product.productDescription.substring(0, 100) + " ..." %>
                             </p>
-                            <a href="/product/<%= product._id %>" class="card-link">Voir le produit</a>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/produit/<%= product._id %>" class="btn">Voir le produit</a>
                         </div>
                     </div>
-                </div>
-                <% }); %>
+                    <% }); %>
+            </div>
         </div>
-    </div>
+    </main>
     <%- include('../footer'); -%>
 </body>
 
