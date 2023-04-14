@@ -1,4 +1,5 @@
 import Product from "../models/Product.js";
+import Category from "../models/Category.js";
 
 export const getProducts = async (req, res, next) => {
 
@@ -29,8 +30,11 @@ export const getProduct = async (req, res, next) => {
 };
 
 export const addProduct = async (req, res, next) => {
+
+    const categories = await Category.find();
     res.render('product/addProduct', {
         title: "productAdd",
+        categories: categories,
     });
 };
 
@@ -39,11 +43,13 @@ export const postProduct = async (req, res, next) => {
     const productName = req.body.productName;
     const productDescription = req.body.productDescription;
     const productPrice = req.body.productPrice;
+    const ownedByCategory = req.body.ownedByCategory;
 
     const product = await Product.create({
         productName,
         productDescription,
         productPrice,
+        ownedByCategory,
     });
 
     console.log(product);
