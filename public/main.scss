@@ -10,14 +10,12 @@ body {
     display: flex;
     flex-direction: column;
 }
-header{ 
-    background: #EEEFF6;
+.navbar{ 
+    background-color: #EEEFF6 !important;
 }
-// img{
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-// }
+.nav-link{
+    color: #A62C31 !important;
+}
 .image{
     background-image: url("http://localhost:8082/assets/raphael-lovaski-DEuob2v77wI-unsplash%20(1).jpg");
 }
@@ -27,6 +25,10 @@ header{
     --bs-btn-hover-bg: #EEEFF6 !important;
     --bs-btn-hover-border-color: #A62C31 !important;
     --bs-btn-hover-color: #A62C31 !important;
+}
+.col{
+    width: 25em !important;
+    height: 20em !important;
 }
 .card{
     width: 25em !important;
@@ -41,11 +43,7 @@ strong{
     color: #EEEFF6;
     height: 14em;
 }
-// main{
-//     min-height: 100%;
-//     position: relative;
-//     padding-bottom: 100px
-// }
+
 footer{
     margin-top: auto;
     padding: 3em;
@@ -54,4 +52,13 @@ footer{
 }
 a{
     text-decoration: none !important;
+}
+.form-container{
+    width: 70% !important;
+    @media screen and (max-width: 750px) { 
+        width: 100% !important;
+    }
+}
+.navbar-toggler-icon{
+    --bs-link-color-rgb: #A62C31 !important;
 }

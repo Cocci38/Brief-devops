@@ -16,35 +16,39 @@
     <header>
         <%- include('../header') %>
     </header>
+    <main>
+        <div class="container form-container" style="margin-bottom: 20px;margin-top: 10px;">
+            <h1 class="h4">Ajouter un produit</h1>
+            <form action="/create-product" method="POST">
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Nom du produit</label>
+                    <input type="text" class="form-control" id="productName" name="productName">
+                </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Prix du produit</label>
+                    <input type="text" class="form-control" id="productPrice" name="productPrice">
+                </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Catégorie du produit</label>
 
-    <h1 class="h4">Ajouter un produit</h1>
-    <form action="/create-product" method="POST">
-        <div class="mb-3">
-            <label for="productName" class="form-label">Nom du produit</label>
-            <input type="text" class="form-control" id="productName" name="productName">
+                    <select class="form-select" name="ownedByCategory" aria-label="ownedByCategory">
+                        <option selected>Choix de la catégorie</option>
+                        <% categories.forEach(function(categorie) { %>
+                            <option value="<%= categorie._id %>">
+                                <%= categorie.categoryName %>
+                            </option>
+                            <% }); %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="productDescription" class="form-label">Description du produit</label>
+                    <textarea class="form-control" id="productDescription" name="productDescription"
+                        rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btnSubmit" style="width: 100%;">Valider</button>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="productPrice" class="form-label">Prix du produit</label>
-            <input type="text" class="form-control" id="productPrice" name="productPrice">
-        </div>
-        <div class="mb-3">
-            <label for="productPrice" class="form-label">Catégorie du produit</label>
-
-            <select class="form-select" name="ownedByCategory" aria-label="ownedByCategory">
-                <option selected>Choix de la catégorie</option>
-                <% categories.forEach(function(categorie) { %>
-                    <option value="<%= categorie._id %>">
-                        <%= categorie.categoryName %>
-                    </option>
-                    <% }); %>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="productDescription" class="form-label">Description du produit</label>
-            <textarea class="form-control" id="productDescription" name="productDescription" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btnSubmit">Valider</button>
-    </form>
+    </main>
     <%- include('../footer'); -%>
 </body>
 
