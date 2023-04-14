@@ -16,33 +16,35 @@
     <header>
         <%- include('../header') %>
     </header>
-    <h1>
-        <%= categoryBodyCare.categoryName %>
-    </h1>
-    <div class="container text-center">
-        <div class="row">
-            <% productBodyCare.forEach(function(product) { %>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">
-                            <%= product.productName %>
-                        </h5>
+    <main>
+        <h2 class="text-center">
+            <%= categoryBodyCare.categoryName %>
+        </h2>
+        <div class="container text-center">
+            <div class="row">
+                <% productBodyCare.forEach(function(product) { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <%= product.productName %>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-body-secondary">
+                                <%= product.productPrice %>€
+                            </h6>
+                            <p class="card-text">
+                                <%= product.productDescription.substring(0, 100) + " ..." %>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/produit/<%= product._id %>" class="btn">Voir le produit</a>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-body-secondary">
-                            <%= product.productPrice %>€
-                        </h6>
-                        <p class="card-text">
-                            <%= product.productDescription.substring(0, 100) + " ..." %>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/produit/<%= product._id %>" class="btn">Voir le produit</a>
-                    </div>
-                </div>
-                <% }); %>
+                    <% }); %>
+            </div>
         </div>
-    </div>
+    </main>
     <%- include('../footer'); -%>
 </body>
 

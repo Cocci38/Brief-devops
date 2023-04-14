@@ -12064,7 +12064,7 @@ body {
 .card {
   width: 25em !important;
   height: 20em !important;
-  margin: 10px 0 10px 20px !important;
+  margin: 10px !important;
 }
 
 strong {
@@ -12074,7 +12074,8 @@ strong {
 .header {
   background-color: #A62C31;
   color: #EEEFF6;
-  height: 14em;
+  height: auto;
+  width: 100%;
 }
 
 footer {
@@ -12097,6 +12098,46 @@ a {
   }
 }
 
-.navbar-toggler-icon {
-  --bs-link-color-rgb: #A62C31 !important;
+.my-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='166 44 49'%3e%3cpath stroke='rgb(166 44 49)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.row {
+  width: 100% !important;
+  justify-content: center !important;
+  margin-left: 1px !important;
+}
+
+.text-sm-center {
+  font-size: 9pt !important;
+}
+
+.card-customisation {
+  width: 100% !important;
+  height: auto !important;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+}
+
+.badge {
+  background-color: #A62C31 !important;
+  color: #EEEFF6 !important;
+}
+
+main {
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+}
+
+.container-header {
+  margin: 0 50px 0 50px;
+}
+
+.img-customisation {
+  margin-right: 10px !important;
+}
+@media screen and (max-width: 750px) {
+  .img-customisation {
+    margin-bottom: 20px !important;
+  }
 }/*# sourceMappingURL=main.css.map */
