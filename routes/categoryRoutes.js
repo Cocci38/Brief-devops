@@ -15,10 +15,10 @@ const router = express.Router();
 
 router.get("/categories", getCategories);
 
-router.get("/soin-des-mains", getHandCare);
+router.get("/beaute-des-mains", getHandCare);
 router.get("/soin-du-visage", getFacialCare);
 router.get("/maquillage", getMakeup);
-router.get("/soin-du-corp", getBodyCare);
+router.get("/soin-du-corps", getBodyCare);
 
 router.get("/category/:categoryName", getCategory);
 

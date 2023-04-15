@@ -34,6 +34,7 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/bootstrap-icons'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/css', express.static(__dirname + '/scss'));
 

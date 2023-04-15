@@ -8,7 +8,7 @@ export const getCategories = async (req, res, next) => {
     console.log(categories);
     //res.json(categories);
     res.status(200).render('category/getCategories', {
-        title: "CategoryList",
+        title: "Liste des catégories",
         categories: categories,
     });
 

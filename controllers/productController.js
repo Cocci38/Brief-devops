@@ -5,13 +5,9 @@ import Category from "../models/Category.js";
 
 export const getProducts = async (req, res, next) => {
     const products = await Product.find();
-    console.log(products);
+    console.log('limite' + productsLimit);
     res.status(200).render("product/getProducts", {
         title: "Liste des produits",
-        products: products,
-    });
-    res.status(200).render("views/homepage", {
-        title: "Page d'accueil",
         products: products,
     });
 };
@@ -69,14 +65,13 @@ export const postProduct = async (req, res, next) => {
 export const putProduct = async (req, res, next) => {
     
     const _id = req.body._id;
-    const productName = req.body.productName;
-    const productDescription = req.body.productDescription;
-    const productPrice = req.body.productPrice;
-    const ownedByCategory = req.body.ownedByCategory;
-    const idCat = ownedByCategory;
-    console.log(idCat);
+    let productName = req.body.productName;
+    let productDescription = req.body.productDescription;
+    let productPrice = req.body.productPrice;
+    let ownedByCategory = req.body.ownedByCategory;
+    console.log(req.body.productPrice);
     // On cherche la catégorie par son id et on l'a modifie
-    const product = await Product.findByIdAndUpdate({
+    const newProduct = await Product.findOneAndUpdate({
         _id,
     }, {
         productName,
@@ -87,12 +82,12 @@ export const putProduct = async (req, res, next) => {
     }, {
         ownedByCategory,
     }, {
-        new: true
+        new: true,
     });
 
-    console.log(product);
+    console.log(newProduct);
     //res.status(201).redirect("/categories");
-    res.status(201).json({ product });
+    res.status(201).json({ success: true, data: newProduct });
 };
 
 // Pour la suppression d'un produit
