@@ -12134,6 +12134,13 @@ main {
   margin-left: 1px !important;
 }
 
+@media screen and (min-width: 1400px) {
+  .row-category {
+    width: 70% !important;
+    margin-left: 150px !important;
+  }
+}
+
 .badge {
   background-color: #A62C31 !important;
   color: #EEEFF6 !important;
@@ -12171,7 +12178,7 @@ main {
 
 footer {
   margin-top: auto;
-  padding: 3em;
+  padding: 1em;
   background-color: #A62C31;
   color: #EEEFF6;
 }/*# sourceMappingURL=main.css.map */

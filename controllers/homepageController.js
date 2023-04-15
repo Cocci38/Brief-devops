@@ -7,13 +7,18 @@ import Category from "../models/Category.js";
 //     });
 // };
 
+// Affichage des 6 premiers produits et des catégories sur la homepage
 export const getHomepage = async (req, res, next) => {
-    const products = await Product.find().limit(6);
-    const categories = await Category.find();
-    console.log(products);
-    res.render("homepage", {
-        title: "Page d'accueil",
-        products: products,
-        categories: categories,
-    });
+    try {
+        const products = await Product.find().limit(6);
+        const categories = await Category.find();
+        console.log(products);
+        res.render("homepage", {
+            title: "Page d'accueil",
+            products: products,
+            categories: categories,
+        });
+    } catch (error) {
+        console.error(error);
+    }
 };

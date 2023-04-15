@@ -1,4 +1,5 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "@fontsource/open-sans";
 
 // Style général
 html, body {
@@ -6,6 +7,7 @@ html, body {
     padding:0;
     height:100%;
     background: #EEEFF6 !important;
+    font-family: "Open Sans" !important;
 }
 body {
     display: flex;
@@ -95,6 +97,12 @@ main{
     justify-content: center !important;
     margin-left: 1px !important;
 }
+.row-category{
+    @media screen and (min-width: 1400px) { 
+        width: 70% !important;
+        margin-left: 150px !important;
+    }
+}
 .badge{
     background-color: #A62C31 !important;
     color: #EEEFF6 !important;
@@ -129,7 +137,7 @@ main{
 }
 footer{
     margin-top: auto;
-    padding: 3em;
+    padding: 1em;
     background-color: #A62C31;
     color: #EEEFF6;
 }
