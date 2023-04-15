@@ -8,7 +8,7 @@ import Category from "../models/Category.js";
 // };
 
 export const getHomepage = async (req, res, next) => {
-    const products = await Product.find();
+    const products = await Product.find().limit(6);
     const categories = await Category.find();
     console.log(products);
     res.render("homepage", {

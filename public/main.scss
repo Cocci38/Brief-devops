@@ -1,5 +1,6 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+// Style général
 html, body {
     margin:0;
     padding:0;
@@ -10,14 +11,93 @@ body {
     display: flex;
     flex-direction: column;
 }
+a{
+    text-decoration: none !important;
+}
+// Style pour le header et la navbar
 .navbar{ 
     background-color: #EEEFF6 !important;
 }
 .nav-link{
     color: #A62C31 !important;
 }
+.my-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='166 44 49'%3e%3cpath stroke='rgb(166 44 49)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important
+}
 .image{
     background-image: url("http://localhost:8082/assets/raphael-lovaski-DEuob2v77wI-unsplash%20(1).jpg");
+}
+.container-header{
+    margin: 0 50px 0 50px;
+}
+.header{
+    background-color: #A62C31;
+    color: #EEEFF6;
+    height: auto;
+    width: 100%;
+}
+strong{
+    font-weight: normal !important;
+}
+// Style pour le corps du site
+main{
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+
+
+.card{
+    width: 25em !important;
+    height: 20em !important;
+    margin: 10px !important;
+}
+.card-customisation{
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+.a-card{
+    width: 25em !important;
+    height: 4em !important;
+    margin: 10px !important;
+    
+}
+.card-category{
+    height: 4em !important;
+}
+.maquillage{
+    background-image: url('/assets/raphael-lovaski-DEuob2v77wI-unsplash (1).jpg')!important;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.beaute-des-mains{
+        background-image: url('/assets/element5-digital-Xf7o2W7qgP0-unsplash.jpg')!important;
+        background-size: contain;
+        background-repeat: no-repeat;
+}
+.soin-du-corps{
+    background-image: url('/assets/camille-brodard-VxAwTeiqDao-unsplash.jpg')!important;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.soin-du-visage{
+    background-image: url('/assets/vya-naturals-M3l24oENY2c-unsplash.jpg')!important;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.col{
+    width: 25em !important;
+    height: 20em !important;
+}
+.row{
+    width: 100% !important;
+    justify-content: center !important;
+    margin-left: 1px !important;
+}
+.badge{
+    background-color: #A62C31 !important;
+    color: #EEEFF6 !important;
 }
 .btn{
     --bs-btn-bg: #A62C31 !important;
@@ -26,71 +106,30 @@ body {
     --bs-btn-hover-border-color: #A62C31 !important;
     --bs-btn-hover-color: #A62C31 !important;
 }
-.col{
-    width: 25em !important;
-    height: 20em !important;
-}
-.card{
-    width: 25em !important;
-    height: 20em !important;
-    margin: 10px !important;
-}
-strong{
-    font-weight: normal !important;
-}
-.header{
-    background-color: #A62C31;
-    color: #EEEFF6;
-    height: auto;
-    width: 100%;
-}
 
-footer{
-    margin-top: auto;
-    padding: 3em;
-    background-color: #A62C31;
-    color: #EEEFF6;
-}
-a{
-    text-decoration: none !important;
-}
+
 .form-container{
     width: 70% !important;
     @media screen and (max-width: 750px) { 
         width: 100% !important;
     }
 }
-.my-toggler-icon{
-    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='166 44 49'%3e%3cpath stroke='rgb(166 44 49)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important
-}
-.row{
-    width: 100% !important;
-    justify-content: center !important;
-    margin-left: 1px !important;
-}
+
+
 .text-sm-center{
     font-size: 9pt !important;
 }
-.card-customisation{
-    width: 100% !important;
-    height: auto !important;
-    margin-top: 50px !important;
-    margin-bottom: 50px !important;
-}
-.badge{
-    background-color: #A62C31 !important;
-    color: #EEEFF6 !important;
-}
-main{
-    margin-top: 50px !important;
-    margin-bottom: 50px !important;
-}
-.container-header{
-    margin: 0 50px 0 50px;
-}
+
+// Style pour le footer
 .img-customisation{
     margin-right: 10px !important;
     @media screen and (max-width: 750px) { 
         margin-bottom: 20px !important;
     }
+}
+footer{
+    margin-top: auto;
+    padding: 3em;
+    background-color: #A62C31;
+    color: #EEEFF6;
 }

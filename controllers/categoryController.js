@@ -17,8 +17,8 @@ export const getCategories = async (req, res, next) => {
 // Get Categorie par l'id
 export const getCategory = async (req, res, next) => {
     console.log(req);
-    const id = req.params.categoryName.replaceAll('-', ' ');
-    //console.log(id);
+    const id = req.params.categoryName.replaceAll('-', ' ').replace('e', 'é');
+    console.log(id);
     //console.log(req.path.split("/")[2]);
     // Création d'un nouvelle catégorie
     //const category = await Category.findById(req.path.split("/")[2]);

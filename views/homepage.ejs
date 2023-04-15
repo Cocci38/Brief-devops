@@ -19,6 +19,23 @@
     </header>
     <main>
         <div class="container text-center">
+            <h2 class="text-center">Nos categories de produits</h2>
+            <div class="row">
+                <% categories.forEach(function(category) { %>
+                    <a href="/<%= category.categoryName.replaceAll(' ', '-').replace('é', 'e') %>"
+                        class="card card-category <%= category.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <%= category.categoryName %>
+                            </p>
+                        </div>
+                    </a>
+                    <% }); %>
+
+            </div>
+        </div>
+        <div class="container text-center" style="margin-top: 20px;">
+            <h2 class="text-center">Nos produits best-seller</h2>
             <div class="row">
                 <% products.forEach(function(product) { %>
                     <div class="card">
@@ -39,7 +56,7 @@
                             <a href="/produit/<%= product._id %>" class="btn">Voir le produit</a>
                         </div>
                     </div>
-                <% }); %>
+                    <% }); %>
             </div>
         </div>
     </main>
