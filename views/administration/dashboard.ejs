@@ -15,9 +15,52 @@
 
 <body>
     <header>
-        <a href="/create-product"><i class="bi bi-plus-lg">Ajouter un produit</i></a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/assets/my_beauty_bio.png" alt="Logo" width="70px" class="d-inline-block align-text-center">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon my-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">Accueil
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link link-opacity-10-hover" href="/maquillage">Maquillage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-opacity-10-hover" href="/soin-du-corps">Soin du corps</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-opacity-10-hover" href="/soin-du-visage">Soin du visage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-opacity-10-hover" href="/beaute-des-mains">Beauté des mains</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="header">
+            <div class="container-header d-flex flex-column align-items-center">
+                <h1 class="fs-3">My Beauty Bio</h1>
+                <p class="lh-base">Bienvenue chez <strong>My Beauty Bio</strong> votre institut de beauté
+                    <strong>biologique</strong>. En seulement quelques clics, vous trouverez toutes nos gammes de produits de <strong>beauté bio et
+                        naturels</strong> adaptés à vos préoccupations beauté et votre type de peau. Tous nos produits sont issus de petits artisans.<br>
+                        Un de nos produits vous intéresse ? Nous serons ravis de vous accueillir à l'institut qui se situe <b>9 rue du centre 75000 Paris</b>.<br>
+                        Vous pouvez également nous joindre par téléphone au <b>01-02-03-04-05</b>.
+                </p>
+            </div>
+        </div>
+
     </header>
     <main>
+        <a href="/create-product" class="btn"><i class="bi bi-plus-lg">Ajouter un produit</i></a>
         <table class="table">
             <thead>
                 <tr>
@@ -27,18 +70,27 @@
                 </tr>
             </thead>
             <tbody>
-                <% products.forEach(product => { %>
-                <tr>
-                    <td><%= product.productName %></td>
-                    <td><%= product.productPrice %>€</td>
-                    <td><%= product.productDescription.substring(0, 70) + " ..." %></td>
-                    <td><a href="/update-product"><i class="bi bi-pencil-square"></i></a></td>
-                    <td><a href="/delete-product"><i class="bi bi-trash"></i></a></td>
-                </tr>
-                <% }) %>
+                <% products.forEach(product=> { %>
+                    <tr>
+                        <td>
+                            <%= product.productName %>
+                        </td>
+                        <td>
+                            <%= product.productPrice %>€
+                        </td>
+                        <td>
+                            <%= product.productDescription.substring(0, 70) + " ..." %>
+                        </td>
+                        <td><a href="/update-product/<%= product._id %>" class="btn"><i class="bi bi-pencil-square"></i></a></td>
+                        <td><a href="/delete-product/<%= product._id %>" class="btn"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                    <% }) %>
             </tbody>
         </table>
     </main>
+    <footer>
+        <%- include('../footer'); -%>
+    </footer>
 </body>
 
 </html>

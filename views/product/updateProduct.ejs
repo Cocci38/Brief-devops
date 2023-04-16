@@ -19,32 +19,35 @@
     </header>
     <main>
         <div class="container form-container" style="margin-bottom: 20px;margin-top: 10px;">
-            <h2 class="text-center">Ajouter un produit</h2>
-            <form action="/create-product" method="POST">
+            <h2 class="text-center">Modifier un produit</h2>
+            <form action="/update-product/<%= product._id %>" method="POST">
                 <div class="mb-3">
                     <label for="productName" class="form-label">Nom du produit</label>
-                    <input type="text" class="form-control" id="productName" name="productName">
+                    <input type="text" class="form-control" id="productName" name="productName"
+                        value="<%= product.productName %>">
                 </div>
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Prix du produit</label>
-                    <input type="text" class="form-control" id="productPrice" name="productPrice">
+                    <input type="text" class="form-control" id="productPrice" name="productPrice"
+                        value="<%= product.productPrice %>">
                 </div>
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Catégorie du produit</label>
-
                     <select class="form-select" name="ownedByCategory" aria-label="ownedByCategory">
-                        <option selected>Choix de la catégorie</option>
-                        <% categories.forEach(function(categorie) { %>
-                            <option value="<%= categorie._id %>">
-                                <%= categorie.categoryName %>
-                            </option>
-                            <% }); %>
+                        <option <%=product.ownedByCategory=="6436c678a7b03f225d71218d" ? 'selected' : '' %>
+                            value="6436c678a7b03f225d71218d">Maquillage</option>
+                        <option <%=product.ownedByCategory=="6437b43b36ed00060e206bd6" ? 'selected' : '' %>
+                            value="6437b43b36ed00060e206bd6">Soin du corps</option>
+                        <option <%=product.ownedByCategory=="6437b46436ed00060e206bda" ? 'selected' : '' %>
+                            value="6437b46436ed00060e206bda">Soin du visage</option>
+                        <option <%=product.ownedByCategory=="6437caa764ae079bbff039a8" ? 'selected' : '' %>
+                            value="6437caa764ae079bbff039a8">Beauté des mains</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="productDescription" class="form-label">Description du produit</label>
                     <textarea class="form-control" id="productDescription" name="productDescription"
-                        rows="7"></textarea>
+                        rows="7"><%= product.productDescription %></textarea>
                 </div>
                 <button type="submit" class="btn btnSubmit" style="width: 100%;">Valider</button>
             </form>

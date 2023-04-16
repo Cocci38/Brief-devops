@@ -74,10 +74,25 @@ export const postProduct = async (req, res, next) => {
     }
 };
 
+// Affichage du formulaire pour créer un produit
+export const updateProduct = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const categories = await Category.find();
+        const product = await Product.findById({ "_id": id });
+        res.render('product/updateProduct', {
+            title: "Modifier un produit",
+            categories: categories,
+            product: product,
+        });
+    } catch (error) {
+        console.error(error);
+    }
+};
 // Pour la modification d'un produit
 export const putProduct = async (req, res, next) => {
     try {
-        const _id = req.body._id;
+        const _id = req.body.id;
         let productName = req.body.productName;
         let productDescription = req.body.productDescription;
         let productPrice = req.body.productPrice;
@@ -99,8 +114,8 @@ export const putProduct = async (req, res, next) => {
         });
 
         console.log(product);
-        //res.status(201).redirect("/administration/dashboard");
-        res.status(201).json({ success: true, data: product });
+        res.status(201).redirect("/administration/dashboard");
+        //res.status(201).json({ success: true, data: product });
     } catch (error) {
         console.error(error);
     }
@@ -109,12 +124,12 @@ export const putProduct = async (req, res, next) => {
 // Pour la suppression d'un produit
 export const deleteProduct = async (req, res, next) => {
     try {
-        const _id = req.body._id;
+        const _id = req.params.id;
         const product = await Product.findByIdAndDelete({
             _id
         });
         console.log(product);
-        res.status(201).json({ product });
+        //res.status(201).json({ product });
         res.status(201).redirect("/administration/dashboard");
     } catch (error) {
         console.error(error);
