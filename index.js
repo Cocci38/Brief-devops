@@ -5,6 +5,7 @@ import connectDB from "./config/connectDB.js";
 import homepageRouter from "./routes/homepageRoutes.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import productRouter from "./routes/productRoutes.js";
+import administrationRouter from "./routes/administrationRoutes.js";
 import bodyParser from "body-parser";
 
 
@@ -41,6 +42,7 @@ app.use('/css', express.static(__dirname + '/scss'));
 app.use(homepageRouter);
 app.use(categoryRouter);
 app.use(productRouter);
+app.use(administrationRouter);
 
 // Create server and Listenning
 app.listen(8082, () => {

@@ -67,7 +67,7 @@ export const postProduct = async (req, res, next) => {
         });
 
         console.log(product);
-        res.status(201).redirect("/products");
+        res.status(201).redirect("/administration/dashboard");
         //res.status(201).json({ product });
     } catch (error) {
         console.error(error);
@@ -99,8 +99,8 @@ export const putProduct = async (req, res, next) => {
         });
 
         console.log(product);
-        //res.status(201).redirect("/categories");
-        res.status(201).json({ success: true, data: newProduct });
+        //res.status(201).redirect("/administration/dashboard");
+        res.status(201).json({ success: true, data: product });
     } catch (error) {
         console.error(error);
     }
@@ -115,6 +115,7 @@ export const deleteProduct = async (req, res, next) => {
         });
         console.log(product);
         res.status(201).json({ product });
+        res.status(201).redirect("/administration/dashboard");
     } catch (error) {
         console.error(error);
     }
