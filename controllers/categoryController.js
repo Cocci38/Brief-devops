@@ -15,27 +15,29 @@ export const getCategories = async (req, res, next) => {
     } catch (error) {
         console.error(error);
     }
-
 };
 
-// Afficher une categorie par son nom
+// Afficher une categorie par son nom et les produits qui lui son associé
 export const getCategory = async (req, res, next) => {
     try {
-        console.log(req);
-        const id = req.params.categoryName.replaceAll('-', ' ').replace('e', 'é');
-        // const id = req.params._id;
+        //console.log(req);
+        let id = req.params.categoryName[0].toUpperCase() + req.params.categoryName.slice(1).replaceAll('-', ' ');
+        if (id === "Beaute des mains") {
+            id = "Beauté des mains";
+        }
         console.log(id);
-        //console.log(req.path.split("/")[2]);
-        // Création d'un nouvelle catégorie
-        //const category = await Category.findById(req.path.split("/")[2]);
 
         const category = await Category.findOne({ "categoryName": id });
-        // const category = await Category.findOne({"_id": id});
-        //console.log(category);
+        const idCategory = category._id; 
+        console.log(idCategory);
+        const products = await Product.find({ "ownedByCategory": idCategory });
+        //const category = await Category.findOne({"_id": id});
+        console.log(category);
         // res.json(category);
         res.status(200).render('category/getCategory', {
             title: category.categoryName,
             category: category,
+            products: products,
         });
     } catch (error) {
         console.error(error);
@@ -43,82 +45,82 @@ export const getCategory = async (req, res, next) => {
 
 };
 
-// Affichage des produits lier à la catégorie soin des mains
-export const getHandCare = async (req, res, next) => {
-    try {
-        const id = "6437caa764ae079bbff039a8";
-        const categoryHandCare = await Category.findById({ "_id": id });
-        const productHandCare = await Product.find({ "ownedByCategory": id });
-        // console.log(categoryHandCare);
-        // console.log(productHandCare);
+// // Affichage des produits lier à la catégorie soin des mains
+// export const getHandCare = async (req, res, next) => {
+//     try {
+//         const id = "6437caa764ae079bbff039a8";
+//         const categoryHandCare = await Category.findById({ "_id": id });
+//         const productHandCare = await Product.find({ "ownedByCategory": id });
+//         // console.log(categoryHandCare);
+//         // console.log(productHandCare);
 
-        res.status(200).render('category/getHandCare', {
-            title: "Beauté des mains",
-            categoryHandCare: categoryHandCare,
-            productHandCare: productHandCare,
-        });
-    } catch (error) {
-        console.error(error);
-    }
-};
+//         res.status(200).render('category/getHandCare', {
+//             title: "Beauté des mains",
+//             categoryHandCare: categoryHandCare,
+//             productHandCare: productHandCare,
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// };
 
-// Affichage des produits lier à la catégorie soin du visage
-export const getFacialCare = async (req, res, next) => {
-    try {
-        const id = "6437b46436ed00060e206bda";
-        const categoryFacialCare = await Category.findById({ "_id": id });
-        const productFacialCare = await Product.find({ "ownedByCategory": id });
-        // console.log(categoryFacialCare);
-        // console.log(productFacialCare);
+// // Affichage des produits lier à la catégorie soin du visage
+// export const getFacialCare = async (req, res, next) => {
+//     try {
+//         const id = "6437b46436ed00060e206bda";
+//         const categoryFacialCare = await Category.findById({ "_id": id });
+//         const productFacialCare = await Product.find({ "ownedByCategory": id });
+//         // console.log(categoryFacialCare);
+//         // console.log(productFacialCare);
 
-        res.status(200).render('category/getFacialCare', {
-            title: "Soin du visage",
-            categoryFacialCare: categoryFacialCare,
-            productFacialCare: productFacialCare,
-        });
-    } catch (error) {
-        console.error(error);
-    }
-};
+//         res.status(200).render('category/getFacialCare', {
+//             title: "Soin du visage",
+//             categoryFacialCare: categoryFacialCare,
+//             productFacialCare: productFacialCare,
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// };
 
-// Affichage des produits lier à la catégorie maquillage
-export const getMakeup = async (req, res, next) => {
-    try {
-        const id = "6436c678a7b03f225d71218d";
-        const categoryMakeup = await Category.findById({ "_id": id });
-        // console.log('je passe ici');
-        const productMakeup = await Product.find({ "ownedByCategory": id });
-        // console.log(categoryMakeup);
-        // console.log(productMakeup);
+// // Affichage des produits lier à la catégorie maquillage
+// export const getMakeup = async (req, res, next) => {
+//     try {
+//         const id = "6436c678a7b03f225d71218d";
+//         const categoryMakeup = await Category.findById({ "_id": id });
+//         // console.log('je passe ici');
+//         const productMakeup = await Product.find({ "ownedByCategory": id });
+//         // console.log(categoryMakeup);
+//         // console.log(productMakeup);
 
-        res.status(200).render('category/getMakeup', {
-            title: "Maquillage",
-            categoryMakeup: categoryMakeup,
-            productMakeup: productMakeup,
-        });
-    } catch (error) {
-        console.error(error);
-    }
-};
+//         res.status(200).render('category/getMakeup', {
+//             title: "Maquillage",
+//             categoryMakeup: categoryMakeup,
+//             productMakeup: productMakeup,
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// };
 
-// Affichage des produits lier à la catégorie soin du corp
-export const getBodyCare = async (req, res, next) => {
-    try {
-        const id = "6437b43b36ed00060e206bd6";
-        const categoryBodyCare = await Category.findById({ "_id": id });
-        const productBodyCare = await Product.find({ "ownedByCategory": id });
-        // console.log(categoryBodyCare);
-        // console.log(productBodyCare);
+// // Affichage des produits lier à la catégorie soin du corp
+// export const getBodyCare = async (req, res, next) => {
+//     try {
+//         const id = "6437b43b36ed00060e206bd6";
+//         const categoryBodyCare = await Category.findById({ "_id": id });
+//         const productBodyCare = await Product.find({ "ownedByCategory": id });
+//         // console.log(categoryBodyCare);
+//         // console.log(productBodyCare);
 
-        res.status(200).render('category/getBodyCare', {
-            title: "Soin du corp",
-            categoryBodyCare: categoryBodyCare,
-            productBodyCare: productBodyCare,
-        });
-    } catch (error) {
-        console.error(error);
-    }
-};
+//         res.status(200).render('category/getBodyCare', {
+//             title: "Soin du corp",
+//             categoryBodyCare: categoryBodyCare,
+//             productBodyCare: productBodyCare,
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// };
 
 
 // Création des catégories

@@ -22,7 +22,7 @@
             <h2 class="text-center">Nos categories de produits</h2>
             <div class="row row-category">
                 <% categories.forEach(function(category) { %>
-                    <a href="/<%= category.categoryName.replaceAll(' ', '-').replace('é', 'e') %>"
+                    <a href="/<%= category.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>"
                         class="card card-category <%= category.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>">
                         <div class="card-body">
                             <p class="card-text">

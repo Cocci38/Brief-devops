@@ -2,10 +2,10 @@ import express from "express";
 import {
     getCategories,
     getCategory,
-    getHandCare,
-    getFacialCare,
-    getMakeup,
-    getBodyCare,
+    // getHandCare,
+    // getFacialCare,
+    // getMakeup,
+    // getBodyCare,
     postCategory,
     putCategory,
     deleteCategory,
@@ -15,12 +15,12 @@ const router = express.Router();
 
 router.get("/categories", getCategories);
 
-router.get("/beaute-des-mains", getHandCare);
-router.get("/soin-du-visage", getFacialCare);
-router.get("/maquillage", getMakeup);
-router.get("/soin-du-corps", getBodyCare);
+// router.get("/beaute-des-mains", getHandCare);
+// router.get("/soin-du-visage", getFacialCare);
+// router.get("/maquillage", getMakeup);
+// router.get("/soin-du-corps", getBodyCare);
 
-router.get("/category/:categoryName", getCategory);
+router.get("/:categoryName", getCategory);
 
 router.post("/create-category", postCategory);
 
