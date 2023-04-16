@@ -18,22 +18,27 @@
         <%- include('../header') %>
     </header>
     <main>
-        <h2 class="text-center">Produits</h2>
-
+        <h2 class="text-center">
+            <%= category.categoryName %>
+        </h2>
         <div class="container text-center">
             <div class="row">
                 <% products.forEach(function(product) { %>
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-header">
                             <h3 class="card-title h5">
                                 <%= product.productName %>
                             </h3>
+                        </div>
+                        <div class="card-body">
                             <h4 class="card-subtitle mb-2 text-body-secondary h6">
                                 <%= product.productPrice %>€
                             </h4>
                             <p class="card-text">
                                 <%= product.productDescription.substring(0, 100) + " ..." %>
                             </p>
+                        </div>
+                        <div class="card-footer">
                             <a href="/produit/<%= product._id %>" class="btn">Voir le produit</a>
                         </div>
                     </div>

@@ -14,6 +14,11 @@ const productSchema = new Schema({
     productPrice:{
         type: Number,
         required: true
+    },
+    ownedByCategory:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'category',
+        required: true
     }
 });
 
