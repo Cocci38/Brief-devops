@@ -31,14 +31,17 @@
                             <p class="card-text">
                                 <%= categorie.categoryName %>
                             </p>
-                            <a href="/category/<%= categorie.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>" class="btn">Voir la catégorie</a>
+                            <a href="/category/<%= categorie.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>"
+                                class="btn">Voir la catégorie</a>
                         </div>
                     </div>
                 </div>
                 <% }); %>
         </div>
     </div>
-    <%- include('../footer'); -%>
+    <footer>
+        <%- include('../footer'); -%>
+    </footer>
 </body>
 
 </html>

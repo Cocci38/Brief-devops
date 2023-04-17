@@ -67,16 +67,39 @@ export const postProduct = async (req, res, next) => {
         });
 
         console.log(product);
-        res.status(201).redirect("/products");
+        res.status(201).redirect("/administration/dashboard");
         //res.status(201).json({ product });
     } catch (error) {
         console.error(error);
     }
 };
 
+// Affichage du formulaire pour créer un produit
+export const updateProduct = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        console.log(id);
+        const product = await Product.findById({ "_id": id });
+
+        const categories = await Category.find();
+
+        const productCategory = await Category.findById({"_id": product.ownedByCategory});
+        console.log(productCategory);
+        
+        res.render('product/updateProduct', {
+            title: "Modifier un produit",
+            categories: categories,
+            product: product,
+            productCategory: productCategory,
+        });
+    } catch (error) {
+        console.error(error);
+    }
+};
 // Pour la modification d'un produit
 export const putProduct = async (req, res, next) => {
     try {
+        console.log(req.body);
         const _id = req.body._id;
         let productName = req.body.productName;
         let productDescription = req.body.productDescription;
@@ -84,23 +107,21 @@ export const putProduct = async (req, res, next) => {
         let ownedByCategory = req.body.ownedByCategory;
         console.log(req.body.productPrice);
         // On cherche la catégorie par son id et on l'a modifie
-        const product = await Product.findOneAndUpdate({
-            _id,
+        const product = await Product.findByIdAndUpdate({
+            _id : _id,
         }, {
             productName,
-        }, {
             productDescription,
-        }, {
             productPrice,
-        }, {
             ownedByCategory,
         }, {
             new: true,
         });
 
         console.log(product);
-        //res.status(201).redirect("/categories");
-        res.status(201).json({ success: true, data: newProduct });
+        //res.status(201).json({ product })
+        res.status(201).redirect("/administration/dashboard");
+        // res.status(201).json({ success: true, data: product });
     } catch (error) {
         console.error(error);
     }
@@ -109,12 +130,13 @@ export const putProduct = async (req, res, next) => {
 // Pour la suppression d'un produit
 export const deleteProduct = async (req, res, next) => {
     try {
-        const _id = req.body._id;
+        const _id = req.params.id;
         const product = await Product.findByIdAndDelete({
             _id
         });
         console.log(product);
-        res.status(201).json({ product });
+        //res.status(201).json({ product });
+        res.status(201).redirect("/administration/dashboard");
     } catch (error) {
         console.error(error);
     }
