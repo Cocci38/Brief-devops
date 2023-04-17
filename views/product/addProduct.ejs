@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <%- include('../header') %>
+        <%- include('../administration/headerAdmin') %>
     </header>
     <main>
         <div class="container form-container" style="margin-bottom: 20px;margin-top: 10px;">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Prix du produit</label>
-                    <input type="text" class="form-control" id="productPrice" name="productPrice">
+                    <input type="number" class="form-control" id="productPrice" name="productPrice">
                 </div>
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Catégorie du produit</label>
@@ -46,12 +46,15 @@
                     <textarea class="form-control" id="productDescription" name="productDescription"
                         rows="7"></textarea>
                 </div>
-                <button type="submit" class="btn btnSubmit" style="width: 100%;">Valider</button>
+                <div class="d-flex gap-2 d-md-block">
+                    <button type="submit" class="btn btnSubmit" style="width: 49%;">Valider</button>
+                    <a href="/admin/dashboard" class="btn btnSubmit" style="width: 50%;">Annuler</a>
+                </div>
             </form>
         </div>
     </main>
     <footer>
-        <%- include('../footer'); -%>
+        <%- include('../administration/footerAdmin'); -%>
     </footer>
 </body>
 

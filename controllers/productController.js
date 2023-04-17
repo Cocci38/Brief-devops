@@ -78,12 +78,19 @@ export const postProduct = async (req, res, next) => {
 export const updateProduct = async (req, res, next) => {
     try {
         const id = req.params.id;
-        const categories = await Category.find();
+        console.log(id);
         const product = await Product.findById({ "_id": id });
+
+        const categories = await Category.find();
+
+        const productCategory = await Category.findById({"_id": product.ownedByCategory});
+        console.log(productCategory);
+        
         res.render('product/updateProduct', {
             title: "Modifier un produit",
             categories: categories,
             product: product,
+            productCategory: productCategory,
         });
     } catch (error) {
         console.error(error);
@@ -92,30 +99,29 @@ export const updateProduct = async (req, res, next) => {
 // Pour la modification d'un produit
 export const putProduct = async (req, res, next) => {
     try {
-        const _id = req.body.id;
+        console.log(req.body);
+        const _id = req.body._id;
         let productName = req.body.productName;
         let productDescription = req.body.productDescription;
         let productPrice = req.body.productPrice;
         let ownedByCategory = req.body.ownedByCategory;
         console.log(req.body.productPrice);
         // On cherche la catégorie par son id et on l'a modifie
-        const product = await Product.findOneAndUpdate({
-            _id,
+        const product = await Product.findByIdAndUpdate({
+            _id : _id,
         }, {
             productName,
-        }, {
             productDescription,
-        }, {
             productPrice,
-        }, {
             ownedByCategory,
         }, {
             new: true,
         });
 
         console.log(product);
+        //res.status(201).json({ product })
         res.status(201).redirect("/administration/dashboard");
-        //res.status(201).json({ success: true, data: product });
+        // res.status(201).json({ success: true, data: product });
     } catch (error) {
         console.error(error);
     }

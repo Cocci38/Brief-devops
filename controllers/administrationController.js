@@ -8,7 +8,7 @@ export const getDashboard = async (req, res, next) => {
         const productsDashboard = await Product.find();
         const categoryDashboard = await Category.find();
         res.status(200).render("administration/dashboard", {
-            title: "Dashboard",
+            title: "Tableau de bord",
             products: productsDashboard,
             categories: categoryDashboard,
         });

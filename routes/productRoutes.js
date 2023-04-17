@@ -18,8 +18,8 @@ router.get("/create-product", addProduct);
 router.post("/create-product", postProduct);
 
 router.get("/update-product/:id", updateProduct);
-router.post("/update-product/:id", putProduct);
-// router.put("/update-product", putProduct);
+router.post("/update-product", putProduct);
+//router.put("/update-product", putProduct);
 
 router.get("/delete-product/:id", deleteProduct);
 router.delete("/delete-product", deleteProduct);
