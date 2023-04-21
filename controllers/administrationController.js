@@ -4,7 +4,7 @@ import Product from "../models/Product.js";
 
 // Afficher tous les produits
 export const getDashboard = async (req, res, next) => {
-    if (userSession) {
+    if (req.session.userRole === "USER_ADMIN") {
         try {
             console.log(req.session);
             const productsDashboard = await Product.find();
