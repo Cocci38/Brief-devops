@@ -15,12 +15,12 @@ const router = express.Router();
 
 router.get("/categories", getCategories);
 
-router.get("/beaute-des-mains", getCategories);
-router.get("/soin-du-visage", getCategories);
-router.get("/maquillage", getCategories);
-router.get("/soin-du-corps", getCategories);
+// router.get("/beaute-des-mains", getCategory);
+// router.get("/soin-du-visage", getCategory);
+// router.get("/maquillage", getCategory);
+// router.get("/soin-du-corps", getCategory);
 
-// router.get("/:categoryName", getCategory);
+router.get("/:categoryName", getCategory);
 
 router.post("/create-category", postCategory);
 
