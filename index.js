@@ -33,6 +33,15 @@ app.use(session({
     }
 }));
 
+
+// app.use((req, res, next) =>{
+//     const {idUser} = req.session
+//     if (idUser) {
+//         res.locals.userSession = user.find((user) => user.role === "USER_ADMIN")
+//     }
+//     next();
+// });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

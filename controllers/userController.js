@@ -13,7 +13,7 @@ export const postSignUp = async (req, res, next) => {
             userPassword,
             userRole,
         });
-
+        console.log(user);
         res.status(201).json({ user });
     } catch (error) {
         console.error(error);
@@ -29,9 +29,20 @@ export const postSignIn = async (req, res, next) => {
             userEmail,
             userPassword,
         );
-
+        console.log(req.session);
+        if (user.userRole === "USER_ADMIN") {
+            const userSession = req.session;
+            userSession.userName = user.userName;
+            console.log('coucou');
+        }
+        //console.log(user);
         res.status(201).json({ user });
     } catch (error) {
         console.error(error);
     }
+}
+
+export const logout = async (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/');
 }
