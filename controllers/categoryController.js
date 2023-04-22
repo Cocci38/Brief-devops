@@ -8,10 +8,19 @@ export const getCategories = async (req, res, next) => {
         const categories = await Category.find();
         console.log(categories);
         // res.json(categories);
-        res.status(200).render('category/getCategories', {
-            title: "Liste des catégories",
-            categories: categories,
-        });
+        if (req.session.userRole === "USER_ADMIN") {
+            const userAdmin = req.session.userRole;
+            res.status(200).render('category/getCategories', {
+                title: "Liste des catégories",
+                categories: categories,
+                userAdmin: userAdmin,
+            });
+        } else {
+            res.status(200).render('category/getCategories', {
+                title: "Liste des catégories",
+                categories: categories,
+            });
+        }
     } catch (error) {
         console.error(error);
     }
@@ -28,25 +37,33 @@ export const getCategory = async (req, res, next) => {
                 id = "Beauté des mains";
             }
             console.log("id : " + id);
-        
+
             const category = await Category.findOne({ "categoryName": id });
-            const idCategory = category._id; 
+            const idCategory = category._id;
             console.log(idCategory);
             const products = await Product.find({ "ownedByCategory": idCategory });
             //const category = await Category.findOne({"_id": id});
             console.log(category);
             // res.json(category);
-            res.status(200).render('category/getCategory', {
-                title: category.categoryName,
-                category: category,
-                products: products,
-            });
+            if (req.session.userRole === "USER_ADMIN") {
+                const userAdmin = req.session.userRole;
+                res.status(200).render('category/getCategory', {
+                    title: category.categoryName,
+                    category: category,
+                    products: products,
+                    userAdmin: userAdmin,
+                });
+            } else {
+                res.status(200).render('category/getCategory', {
+                    title: category.categoryName,
+                    category: category,
+                    products: products,
+                });
+            }
         }
-        
     } catch (error) {
         console.error(error);
     }
-
 };
 
 // Création des catégories

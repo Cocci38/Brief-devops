@@ -27,11 +27,21 @@ export const getProduct = async (req, res, next) => {
         console.log(category);
 
         //res.json(product);
-        res.status(200).render('product/getProduct', {
-            title: "productOne",
-            product: product,
-            category: category,
-        });
+        if (req.session.userRole === "USER_ADMIN") {
+            const userAdmin = req.session.userRole;
+            res.status(200).render('product/getProduct', {
+                title: "productOne",
+                product: product,
+                category: category,
+                userAdmin: userAdmin,
+            });
+        } else {
+            res.status(200).render('product/getProduct', {
+                title: "productOne",
+                product: product,
+                category: category,
+            });
+        }
     } catch (error) {
         console.error(error);
     }
