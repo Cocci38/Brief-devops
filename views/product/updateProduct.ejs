@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="productPrice" class="form-label">Prix du produit</label>
-                    <input type="number" class="form-control" id="productPrice" name="productPrice"
+                    <input type="text" pattern="^\d*(\.\d{0,2})?$" class="form-control" id="productPrice" name="productPrice"
                         value="<%= product.productPrice %>">
                 </div>
                 <div class="mb-3">

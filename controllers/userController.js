@@ -1,11 +1,11 @@
 import User from "../models/User.js";
 
-export const postSignUp = async (req, res, next) => {
+export const postSignUpAdmin = async (req, res, next) => {
     try {
         const userName = req.body.userName;
         const userEmail = req.body.userEmail;
         const userPassword = req.body.userPassword;
-        const userRole = "USER_USER";
+        const userRole = "USER_ADMIN";
 
         const user = await User.create({
             userName,
