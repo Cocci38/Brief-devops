@@ -20,13 +20,14 @@ export const getCategories = async (req, res, next) => {
 // Afficher une categorie par son nom et les produits qui lui son associé
 export const getCategory = async (req, res, next) => {
     try {
+        console.log("req.params.categoryName : " + req.params.categoryName);
         if (req.params.categoryName !== "favicon.ico") {
-            //console.log("params : " + req.params.categoryName);
+            console.log("params : " + req.params.categoryName);
             let id = req.params.categoryName[0].toUpperCase() + req.params.categoryName.slice(1).replaceAll('-', ' ');
             if (id === "Beaute des mains") {
                 id = "Beauté des mains";
             }
-            //console.log("id : " + id);
+            console.log("id : " + id);
         
             const category = await Category.findOne({ "categoryName": id });
             const idCategory = category._id; 

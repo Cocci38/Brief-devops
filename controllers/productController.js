@@ -40,37 +40,46 @@ export const getProduct = async (req, res, next) => {
 
 // Affichage du formulaire pour créer un produit
 export const addProduct = async (req, res, next) => {
-    try {
-        const categories = await Category.find();
-        res.render('product/addProduct', {
-            title: "productAdd",
-            categories: categories,
-        });
-    } catch (error) {
-        console.error(error);
+    console.log(req.session);
+    if (req.session.userRole === "USER_ADMIN") {
+        try {
+            const userAdmin = req.session.userRole;
+            const categories = await Category.find();
+            res.render('product/addProduct', {
+                title: "productAdd",
+                categories: categories,
+                userAdmin: userAdmin,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        res.redirect("/");
     }
 };
 
 // Soumission du formulaire en post
 export const postProduct = async (req, res, next) => {
-    try {
-        const productName = req.body.productName;
-        const productDescription = req.body.productDescription;
-        const productPrice = req.body.productPrice;
-        const ownedByCategory = req.body.ownedByCategory;
+    if (req.session.userRole === "USER_ADMIN") {
+        try {
+            const productName = req.body.productName;
+            const productDescription = req.body.productDescription;
+            const productPrice = req.body.productPrice;
+            const ownedByCategory = req.body.ownedByCategory;
 
-        const product = await Product.create({
-            productName,
-            productDescription,
-            productPrice,
-            ownedByCategory,
-        });
+            const product = await Product.create({
+                productName,
+                productDescription,
+                productPrice,
+                ownedByCategory,
+            });
 
-        console.log(product);
-        res.status(201).redirect("/administration/dashboard");
-        //res.status(201).json({ product });
-    } catch (error) {
-        console.error(error);
+            console.log(product);
+            res.status(201).redirect("/admin/dashboard");
+            //res.status(201).json({ product });
+        } catch (error) {
+            console.error(error);
+        }
     }
 };
 
@@ -83,9 +92,9 @@ export const updateProduct = async (req, res, next) => {
 
         const categories = await Category.find();
 
-        const productCategory = await Category.findById({"_id": product.ownedByCategory});
+        const productCategory = await Category.findById({ "_id": product.ownedByCategory });
         console.log(productCategory);
-        
+
         res.render('product/updateProduct', {
             title: "Modifier un produit",
             categories: categories,
@@ -108,7 +117,7 @@ export const putProduct = async (req, res, next) => {
         console.log(req.body.productPrice);
         // On cherche la catégorie par son id et on l'a modifie
         const product = await Product.findByIdAndUpdate({
-            _id : _id,
+            _id: _id,
         }, {
             productName,
             productDescription,
@@ -120,7 +129,7 @@ export const putProduct = async (req, res, next) => {
 
         console.log(product);
         //res.status(201).json({ product })
-        res.status(201).redirect("/administration/dashboard");
+        res.status(201).redirect("/admin/dashboard");
         // res.status(201).json({ success: true, data: product });
     } catch (error) {
         console.error(error);
@@ -136,7 +145,7 @@ export const deleteProduct = async (req, res, next) => {
         });
         console.log(product);
         //res.status(201).json({ product });
-        res.status(201).redirect("/administration/dashboard");
+        res.status(201).redirect("/admin/dashboard");
     } catch (error) {
         console.error(error);
     }
