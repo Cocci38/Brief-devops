@@ -36,8 +36,8 @@
                     <label for="productPrice" class="form-label">Catégorie du produit</label>
                     <select class="form-select" name="ownedByCategory" aria-label="ownedByCategory">
                         <% categories.forEach(function(category) { %>
-                            <option <%=productCategory.categoryName===category.categoryName ? "selected" : "" %> value="
-                                <%= category._id %>"><%= category.categoryName %>
+                            <option <%=productCategory.categoryName===category.categoryName ? "selected" : "" %>
+                                value="<%= category._id %>"><%= category.categoryName %>
                             </option>
                             <% }) %>
                     </select>

@@ -26,7 +26,17 @@
                 <li class="nav-item">
                     <a class="nav-link link-opacity-10-hover" href="/beaute-des-mains">Beauté des mains</a>
                 </li>
+                <% if (typeof userAdmin !== "undefined") { %>
+                <li class="nav-item">
+                    <a class="nav-link link-opacity-10-hover" href="/admin/dashboard">Tableau de bord</a>
+                </li>
+                <% } %>
             </ul>
+            <% if (typeof userAdmin !== "undefined") { %>
+                <a href="/admin/deconnexion" class="btn">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            <% } %>
         </div>
     </div>
 </nav>

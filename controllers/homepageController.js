@@ -13,11 +13,22 @@ export const getHomepage = async (req, res, next) => {
         const products = await Product.find().limit(6);
         const categories = await Category.find();
         console.log(products);
-        res.render("homepage", {
-            title: "Page d'accueil",
-            products: products,
-            categories: categories,
-        });
+        if (req.session.userRole === "USER_ADMIN") {
+            const userAdmin = req.session.userRole;
+            res.render("homepage", {
+                title: "Page d'accueil",
+                products: products,
+                categories: categories,
+                userAdmin: userAdmin,
+            });
+        }else{
+            res.render("homepage", {
+                title: "Page d'accueil",
+                products: products,
+                categories: categories,
+            });
+        }
+        
     } catch (error) {
         console.error(error);
     }
