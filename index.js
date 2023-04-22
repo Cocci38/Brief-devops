@@ -28,7 +28,7 @@ app.use(session({
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24,
         secure: false,
     }
 }));
@@ -36,8 +36,8 @@ app.use(session({
 
 app.use((req, res, next) =>{
     if (req.session.userRole === "USER_ADMIN") {
-        const {idAdmin} = req.session;
-        if (idAdmin) {
+        const {userAdmin} = req.session;
+        if (userAdmin) {
             res.locals.userSession = req.session.userRole;
         }
     }

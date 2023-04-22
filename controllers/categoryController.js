@@ -20,25 +20,28 @@ export const getCategories = async (req, res, next) => {
 // Afficher une categorie par son nom et les produits qui lui son associé
 export const getCategory = async (req, res, next) => {
     try {
-        //console.log(req);
-        let id = req.params.categoryName[0].toUpperCase() + req.params.categoryName.slice(1).replaceAll('-', ' ');
-        if (id === "Beaute des mains") {
-            id = "Beauté des mains";
+        if (req.params.categoryName !== "favicon.ico") {
+            //console.log("params : " + req.params.categoryName);
+            let id = req.params.categoryName[0].toUpperCase() + req.params.categoryName.slice(1).replaceAll('-', ' ');
+            if (id === "Beaute des mains") {
+                id = "Beauté des mains";
+            }
+            //console.log("id : " + id);
+        
+            const category = await Category.findOne({ "categoryName": id });
+            const idCategory = category._id; 
+            console.log(idCategory);
+            const products = await Product.find({ "ownedByCategory": idCategory });
+            //const category = await Category.findOne({"_id": id});
+            console.log(category);
+            // res.json(category);
+            res.status(200).render('category/getCategory', {
+                title: category.categoryName,
+                category: category,
+                products: products,
+            });
         }
-        console.log(id);
-
-        const category = await Category.findOne({ "categoryName": id });
-        const idCategory = category._id; 
-        console.log(idCategory);
-        const products = await Product.find({ "ownedByCategory": idCategory });
-        //const category = await Category.findOne({"_id": id});
-        console.log(category);
-        // res.json(category);
-        res.status(200).render('category/getCategory', {
-            title: category.categoryName,
-            category: category,
-            products: products,
-        });
+        
     } catch (error) {
         console.error(error);
     }
