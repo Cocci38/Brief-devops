@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import path from "path";
 import dotenv from "dotenv";
 import connectDB from "./config/connectDB.js";
@@ -6,6 +7,7 @@ import homepageRouter from "./routes/homepageRoutes.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import productRouter from "./routes/productRoutes.js";
 import administrationRouter from "./routes/administrationRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 import bodyParser from "body-parser";
 
 
@@ -19,6 +21,28 @@ const __dirname = path.resolve();
 
 // Create express App
 const app = express();
+
+app.use(session({
+    name: process.env.SESSION_NAME,
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24,
+        secure: false,
+    }
+}));
+
+
+app.use((req, res, next) =>{
+    if (req.session.userRole === "USER_ADMIN") {
+        const {userAdmin} = req.session;
+        if (userAdmin) {
+            res.locals.userSession = req.session.userRole;
+        }
+    }
+    next();
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,6 +67,7 @@ app.use(homepageRouter);
 app.use(categoryRouter);
 app.use(productRouter);
 app.use(administrationRouter);
+app.use(userRouter);
 
 // Create server and Listenning
 app.listen(8082, () => {

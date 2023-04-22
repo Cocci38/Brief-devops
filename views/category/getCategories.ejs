@@ -22,7 +22,7 @@
         purus vel pharetra imperdiet, libero sem pharetra ex, maximus ullamcorper lacus est quis lectus.
     </div>
     <h2 class="card-title ">Categories</h2>
-    <div class="container text-center">
+    <div class="container text-center container-customize">
         <div class="row">
             <% categories.forEach(function(categorie) { %>
                 <div class="col">
@@ -31,7 +31,7 @@
                             <p class="card-text">
                                 <%= categorie.categoryName %>
                             </p>
-                            <a href="/category/<%= categorie.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>"
+                            <a href="/<%= categorie.categoryName.replaceAll(' ', '-').replace('é', 'e').toLowerCase() %>"
                                 class="btn">Voir la catégorie</a>
                         </div>
                     </div>

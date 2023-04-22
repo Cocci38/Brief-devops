@@ -1,5 +1,6 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-@import "@fontsource/open-sans";
+//@import "@fontsource/open-sans";
+
 
 // Style général
 html, body {
@@ -47,7 +48,6 @@ main{
     margin-bottom: 50px !important;
 }
 
-
 .card{
     width: 25em !important;
     height: 20em !important;
@@ -88,14 +88,25 @@ main{
     background-size: contain;
     background-repeat: no-repeat;
 }
+.container-customize {
+    @media screen and (max-width: 1200px) { 
+        width: 100% !important;
+    }
+    @media screen and (min-width: 1200px) { 
+        width: 70% !important;
+    }
+}
 .col{
     width: 25em !important;
     height: 20em !important;
 }
 .row{
     width: 100% !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     margin-left: 1px !important;
+    @media screen and (max-width: 1200px) { 
+        justify-content: center !important;
+    }
 }
 .row-category{
     @media screen and (min-width: 1400px) { 
