@@ -20,7 +20,7 @@ router.get("/soin-du-visage", getCategory);
 router.get("/maquillage", getCategory);
 router.get("/soin-du-corps", getCategory);
 
-// router.get("/:categoryName", getCategory);
+//router.get("/:categoryName", getCategory);
 
 router.post("/create-category", postCategory);
 
