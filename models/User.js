@@ -25,11 +25,13 @@ const userSchema = new Schema({
     }
 });
 
+// Vérification de la connexion de l'utilisateur
 userSchema.statics.findUser = async(userEmail, userPassword) => {
     const user = await User.findOne({ userEmail });
     if (!user) {
         throw new Error('Erreur, impossible de se connecter !');
     }
+    // On compare le passeword saisie par l'utilisateur et le password hasher dans la bdd
     const isPasswordValid = await bcrypt.compare(userPassword, user.userPassword);
     if (!isPasswordValid) {
         throw new Error('Erreur, impossible de se connecter !');
@@ -37,6 +39,7 @@ userSchema.statics.findUser = async(userEmail, userPassword) => {
     return user;
 }
 
+// Pour crypter le password dans la bdd
 userSchema.pre("save", async function() {
     if (this.isModified("userPassword")) {
         this.userPassword = await bcrypt.hash(this.userPassword, 8);

@@ -2,7 +2,7 @@ import Category from "../models/Category.js";
 import Product from "../models/Product.js";
 
 
-// Afficher tous les produits
+// Afficher tous les produits sur le dashboard de l'administrateur
 export const getDashboard = async (req, res, next) => {
     if (req.session.userRole === "USER_ADMIN") {
         try {

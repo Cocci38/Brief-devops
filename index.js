@@ -14,14 +14,18 @@ import bodyParser from "body-parser";
 // Configuration dotenv
 dotenv.config();
 
-// Configuration dotenv
-//dotenv.config();
-
 const __dirname = path.resolve();
 
-// Create express App
+// Initilisation de l'application express
 const app = express();
 
+/** 
+ * Configuration de la session
+ * secret : clé de chaine aléatoire unique pour authentifier une session
+ * resave : Permet à la session d'être stockée dans le magasin de sessions
+ * saveUninitialized : permet d'envoyer n'importe quelle session dans le magasin
+ * Cookie maxAge : défini le délai d'expiration du cookie (ici 24h en millisecondes)
+ * */ 
 app.use(session({
     name: process.env.SESSION_NAME,
     resave: false,
@@ -33,17 +37,7 @@ app.use(session({
     }
 }));
 
-
-app.use((req, res, next) =>{
-    if (req.session.userRole === "USER_ADMIN") {
-        const {userAdmin} = req.session;
-        if (userAdmin) {
-            res.locals.userSession = req.session.userRole;
-        }
-    }
-    next();
-});
-
+// Pour analyser les données entrantes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -53,8 +47,9 @@ connectDB();
 // Set views engine
 app.set("view engine", "ejs");
 
-// Set views directory
+// Set le fichier des vues
 app.set("views", "views");
+
 
 app.use(express.static(path.join(__dirname, "public")));
 
