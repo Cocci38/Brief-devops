@@ -12024,7 +12024,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -12142,7 +12143,7 @@ main {
 
 .row {
   width: 100% !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   margin-left: 1px !important;
 }
 @media screen and (max-width: 1200px) {
@@ -12151,10 +12152,17 @@ main {
   }
 }
 
-@media screen and (min-width: 1400px) {
+.row-category {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+@media screen and (min-width: 992px) {
   .row-category {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     width: 70% !important;
-    margin-left: 150px !important;
+    margin-left: 15% !important;
   }
 }
 

@@ -3,122 +3,158 @@
 
 
 // Style général
-html, body {
-    margin:0;
-    padding:0;
-    height:100%;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     background: #EEEFF6 !important;
     font-family: "Open Sans" !important;
 }
+
 body {
     display: flex;
     flex-direction: column;
 }
-a{
+
+a {
     text-decoration: none !important;
 }
+
 // Style pour le header et la navbar
-.navbar{ 
+.navbar {
     background-color: #EEEFF6 !important;
 }
-.nav-link{
+
+.nav-link {
     color: #A62C31 !important;
 }
-.my-toggler-icon{
-    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='166 44 49'%3e%3cpath stroke='rgb(166 44 49)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important
+
+.my-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='166 44 49'%3e%3cpath stroke='rgb(166 44 49)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important
 }
-.image{
+
+.image {
     background-image: url("http://localhost:8082/assets/raphael-lovaski-DEuob2v77wI-unsplash%20(1).jpg");
 }
-.container-header{
+
+.container-header {
     margin: 0 50px 0 50px;
 }
-.header{
+
+.header {
     background-color: #A62C31;
     color: #EEEFF6;
     height: auto;
     width: 100%;
 }
-strong{
+
+strong {
     font-weight: normal !important;
 }
+
 // Style pour le corps du site
-main{
+main {
     margin-top: 50px !important;
     margin-bottom: 50px !important;
 }
 
-.card{
+.card {
     width: 25em !important;
     height: 20em !important;
     margin: 10px !important;
 }
-.card-customisation{
+
+.card-customisation {
     width: 100% !important;
     height: auto !important;
     margin-top: 50px !important;
     margin-bottom: 50px !important;
 }
-.a-card{
+
+.a-card {
     width: 25em !important;
     height: 4em !important;
     margin: 10px !important;
-    
+
 }
-.card-category{
+
+.card-category {
     height: 4em !important;
 }
-.maquillage{
-    background-image: url('/assets/raphael-lovaski-DEuob2v77wI-unsplash (1).jpg')!important;
+
+.maquillage {
+    background-image: url('/assets/raphael-lovaski-DEuob2v77wI-unsplash (1).jpg') !important;
     background-size: contain;
     background-repeat: no-repeat;
 }
-.beaute-des-mains{
-        background-image: url('/assets/element5-digital-Xf7o2W7qgP0-unsplash.jpg')!important;
-        background-size: contain;
-        background-repeat: no-repeat;
-}
-.soin-du-corps{
-    background-image: url('/assets/camille-brodard-VxAwTeiqDao-unsplash.jpg')!important;
+
+.beaute-des-mains {
+    background-image: url('/assets/element5-digital-Xf7o2W7qgP0-unsplash.jpg') !important;
     background-size: contain;
     background-repeat: no-repeat;
 }
-.soin-du-visage{
-    background-image: url('/assets/vya-naturals-M3l24oENY2c-unsplash.jpg')!important;
+
+.soin-du-corps {
+    background-image: url('/assets/camille-brodard-VxAwTeiqDao-unsplash.jpg') !important;
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.soin-du-visage {
+    background-image: url('/assets/vya-naturals-M3l24oENY2c-unsplash.jpg') !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .container-customize {
-    @media screen and (max-width: 1200px) { 
+    @media screen and (max-width: 1200px) {
         width: 100% !important;
     }
-    @media screen and (min-width: 1200px) { 
+
+    @media screen and (min-width: 1200px) {
         width: 70% !important;
     }
 }
-.col{
+
+.col {
     width: 25em !important;
     height: 20em !important;
 }
-.row{
+
+.row {
     width: 100% !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
     margin-left: 1px !important;
-    @media screen and (max-width: 1200px) { 
+
+    @media screen and (max-width: 1200px) {
         justify-content: center !important;
     }
+
+    // @media screen and (min-width: 1200px) {
+    //     width: 70% !important;
+    //     margin-left: 150px !important;
+    // }
 }
-.row-category{
-    @media screen and (min-width: 1400px) { 
+
+.row-category {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    @media screen and (min-width: 992px) {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         width: 70% !important;
-        margin-left: 150px !important;
+        margin-left: 15% !important;
     }
 }
-.badge{
+
+.badge {
     background-color: #A62C31 !important;
     color: #EEEFF6 !important;
 }
-.btn{
+
+.btn {
     --bs-btn-bg: #A62C31 !important;
     --bs-btn-color: #EEEFF6 !important;
     --bs-btn-hover-bg: #EEEFF6 !important;
@@ -127,26 +163,29 @@ main{
 }
 
 
-.form-container{
+.form-container {
     width: 70% !important;
-    @media screen and (max-width: 750px) { 
+
+    @media screen and (max-width: 750px) {
         width: 100% !important;
     }
 }
 
 
-.text-sm-center{
+.text-sm-center {
     font-size: 9pt !important;
 }
 
 // Style pour le footer
-.img-customisation{
+.img-customisation {
     margin-right: 10px !important;
-    @media screen and (max-width: 750px) { 
+
+    @media screen and (max-width: 750px) {
         margin-bottom: 20px !important;
     }
 }
-footer{
+
+footer {
     margin-top: auto;
     padding: 1em;
     background-color: #A62C31;
