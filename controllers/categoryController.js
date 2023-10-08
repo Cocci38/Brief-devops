@@ -26,7 +26,7 @@ export const getCategories = async (req, res, next) => {
     }
 };
 
-// Afficher une categorie par son nom et les produits qui lui son associé
+// Afficher une categorie par son nom et les produits qui lui sont associés
 export const getCategory = async (req, res, next) => {
     try {
         // console.log(req.path.split("/")[1]);
